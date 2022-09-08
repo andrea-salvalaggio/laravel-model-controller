@@ -10,14 +10,26 @@
 @section('main-content')
     <div class="container p-5">
         <div class="row">
-            <div class="col-3">
-                <div class="card text-bg-light mb-3" style="max-width: 18rem;">
-                    <div class="card-header">Header</div>
-                    <div class="card-body">
-                      <h5 class="card-title">Primary card title</h5>
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    </div>
-                </div>                  
+            <div class="col-12">
+                <div class="d-flex flex-wrap justify-content-center">
+
+                    @forelse ($movies as $movie)
+                        <div class="card text-bg-light w-25 m-2">
+                                <div class="card-header"> {{ $movie->title }} </div>
+                                <div class="card-body">
+                                <h5 class="card-title"> {{ $movie->original_title }} </h5>
+                                <p class="card-text"> {{ $movie->nationality }}</p>
+                                <p class="card-text"> {{ $movie->date }}</p>
+                                <p class="card-text"> {{ $movie->vote }}</p>
+                            </div>
+                        </div>
+                    @empty
+                        <p>
+                            Nothing! -> The new movie about NOTHING
+                        </p>
+                    @endforelse
+                    
+                </div>
             </div>
         </div>
     </div>
